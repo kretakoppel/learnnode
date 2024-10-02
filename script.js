@@ -1,1 +1,1 @@
-console.log('Hello script!');
+console.log(60*60*24*365);
