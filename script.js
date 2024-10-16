@@ -1,18 +1,6 @@
-const date = new Date();
+const date = new Date('1993-03-21T12:00:00');
+console.log(date);
 console.log(date.getDay());
-if(date.getDay() === 0){
-    console.log('Pühapäev');
-} else if(date.getDay() === 1){
-    console.log('Esmaspäev');
-} else if(date.getDay() === 2){
-    console.log('Teisipäev');
-} else if(date.getDay() === 3){
-    console.log('Kolmapäev');
-} else if(date.getDay() === 4){
-    console.log('Nejapäev');
-} else if(date.getDay() === 5 || date.getDay() === 6){
-    console.log('Pidu');
-}
 
 switch(date.getDay()){
     case 0:
@@ -31,8 +19,10 @@ switch(date.getDay()){
         console.log('Neljapäev');
         break;
     case 5:
+        console.log('Reede');
+        break;
     case 6:
-        console.log('Pidu');
+        console.log('Laupäev');
         break;
     default:
         console.log('WTF?');
