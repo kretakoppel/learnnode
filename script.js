@@ -1,17 +1,40 @@
-import readline from 'node:readline';
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+const date = new Date();
+console.log(date.getDay());
+if(date.getDay() === 0){
+    console.log('Pühapäev');
+} else if(date.getDay() === 1){
+    console.log('Esmaspäev');
+} else if(date.getDay() === 2){
+    console.log('Teisipäev');
+} else if(date.getDay() === 3){
+    console.log('Kolmapäev');
+} else if(date.getDay() === 4){
+    console.log('Nejapäev');
+} else if(date.getDay() === 5 || date.getDay() === 6){
+    console.log('Pidu');
+}
 
-rl.question('Give us a number', a => {
-    if(a < 10){
-        console.log('less than 10');
-    } else if(a==10){
-        console.log('equal to 10');
-    } else {
-        console.log('more than 10');
-    }
-    rl.close();
-});
-
+switch(date.getDay()){
+    case 0:
+        console.log('Pühapäev');
+        break;
+    case 1:
+        console.log('Esmaspäev');
+        break;
+    case 2:
+        console.log('Teisipäev');
+        break;
+    case 3:
+        console.log('Kolmapäev');
+        
+    case 4:
+        console.log('Neljapäev');
+        break;
+    case 5:
+    case 6:
+        console.log('Pidu');
+        break;
+    default:
+        console.log('WTF?');
+        break;        
+}
