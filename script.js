@@ -1,7 +1,8 @@
-let time = Date.now();
-console.log(time);
-let i = 0;
-while(time+10000 > Date.now()){
-    i++;
+let i = 10;
+while(i<0){
+    console.log('loop');
 }
-console.log(i);
+
+do {
+    console.log('loop');
+} while(i<0);
