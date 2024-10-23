@@ -1,9 +1,5 @@
-function recursive(num){
-    console.log(num);
-    if(num<10){
-        // num++;
-        recursive(++num);
-    }
-}
+let fruits = ['apple', 'cherry', 'mango', 'banana'];
 
-recursive(0);
+fruits.forEach(function (fruit, i, fruits){
+    console.log(fruit, i, fruits);
+});
