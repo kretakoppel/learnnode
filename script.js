@@ -1,8 +1,18 @@
-let i = 10;
-while(i<0){
-    console.log('loop');
+let array = ['banana', 'apple', 'cherry', 'pear'];
+
+for(value of array){
+    value = 'nothing';
+    console.log(value);
 }
 
-do {
-    console.log('loop');
-} while(i<0);
+console.log(array);
+
+let object = {
+    name: 'kaspar',
+    age: 31,
+    color: 'green',
+}
+
+for(key in object){
+    console.log(key, object[key]);
+}
