@@ -1,45 +1,39 @@
 let canvas = document.querySelector('canvas');
 let context = canvas.getContext('2d');
 
-let x = 100;
-let y = 100;
-
-context.beginPath();
-context.rect(x,y,100,100);
-context.fillStyle = '#bada55';
-context.fill();
-
-// setInterval(() => {
-//     context.clearRect(x, y, 100, 100);
-//     context.beginPath();
-//     x+=1;
-//     context.rect(x,y,100,100);
-//     context.fillStyle = '#bada55';
-//     context.fill();
-// }, 16.66666666666667);
-
-let start;
-let prevTimestamp;
-function step(timestamp){
-    if(prevTimestamp == undefined){
-        prevTimestamp = timestamp;
-    }
-    if(start == undefined){
-        start = timestamp;
-    }
-    let delta = timestamp - prevTimestamp;
-    prevTimestamp = timestamp;
-
-    console.log(delta);
-
-    context.clearRect(x-1, y, 100, 100);
+let draw = false;
+let drawSize = 30;
+function drawing(){
+    let rect = event.target.getBoundingClientRect();
+    let x = event.clientX - rect.left;
+    let y = event.clientY - rect.top;
     context.beginPath();
-    x+=10/60*delta;
-    context.rect(x,y,100,100);
-    context.fillStyle = '#bada55';
+    context.arc(x, y, drawSize, 0, 2*Math.PI);
     context.fill();
-
-    requestAnimationFrame(step);
 }
 
-requestAnimationFrame(step);
+let size =  document.querySelector('input#size');
+
+size.addEventListener('input', () => {
+    drawSize = size.value;
+})
+
+canvas.addEventListener('mousemove', event => {
+    if(draw){
+       drawing();
+    }
+});
+
+canvas.addEventListener('mousedown', () => {
+    draw = true;
+    drawing();
+});
+
+canvas.addEventListener('mouseup', () => {
+    draw = false;
+});
+
+let color = document.querySelector('input#color');
+color.addEventListener('input', () => {
+    context.fillStyle = color.value;
+})
