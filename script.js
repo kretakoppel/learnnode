@@ -1,27 +1,13 @@
-let button = document.querySelector('button');
-let input = document.querySelector('input');
-let list = document.querySelector('ul');
+let canvas = document.querySelector('canvas');
+let context = canvas.getContext('2d');
+context.moveTo(0,0);
+context.lineTo(300, 300);
+context.stroke();
 
-let add = () => {
-    if(input.value.trim()){
-        let listItem = document.createElement('li');
-        listItem.innerHTML = input.value.trim();
-        list.append(listItem);   
-    }
-    input.value = '';
-}
+context.beginPath();
+context.arc(600,600,50, 0, 2*Math.PI);
+context.stroke();
 
-button.addEventListener('click', add);
-input.addEventListener('keydown', event => {
-    if(event.code === 'Enter'){
-        add();
-    }
-});
-
-button.addEventListener('mouseover', () => {
-    button.disabled = true;
-});
-
-button.addEventListener('mouseleave', () => {
-    button.disabled = false;
-});
+context.font = "50px Arial";
+context.fillText('WOW CANVAS!', 600, 100);
+context.strokeText('WOW CANVAS!', 600, 200);
