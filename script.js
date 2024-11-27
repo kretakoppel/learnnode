@@ -1,17 +1,29 @@
 import express from 'express';
+import nunjucks from 'nunjucks';
+import fs from 'fs';
 const app = express();
 const port = 3000;
 
+nunjucks.configure('views', {
+  autoescape: true,
+  express: app
+});
+
+
 app.get('/', (req, res) => {
-  res.sendFile(import.meta.dirname + '/views/index.html');
+  res.render('index.njk');
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile(import.meta.dirname + '/views/about.html');
+  res.render('about.njk');
 });
 
-app.get('/hello', (req, res) => {
-    res.sendFile(import.meta.dirname + '/views/about.html');
+app.get('/form', (req, res) => {
+  res.render('form.njk');
+});
+
+app.get('/answer', (req, res) => {
+    res.render('answer.njk', req.query);
 });
 
 app.listen(port, () => {
