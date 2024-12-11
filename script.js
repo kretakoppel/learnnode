@@ -26,6 +26,21 @@ app.get('/answer', (req, res) => {
     res.render('answer.njk', req.query);
 });
 
+app.get('/square', (req, res) => {
+  res.render('square.njk');
+});
+
+app.get('/squareanswer', (req, res) => {
+  let a = req.query.a;
+  let answers = {
+    a: a,
+    S: Math.pow(a, 2),
+    P: 4 * a,
+    V: Math.pow(a, 3)
+  };
+  res.render('squareanswer.njk', answers);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });
