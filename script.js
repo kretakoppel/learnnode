@@ -1,3 +1,5 @@
+
+
 import express from 'express';
 import fs from 'fs';
 import nunjucks from 'nunjucks';
@@ -24,7 +26,7 @@ app.get('/form', (req, res) => {
 
 app.get('/answer', (req, res) => {
     res.render('answer.njk', req.query);
-}); 
+});
 
 app.get('/square', (req, res) => {
     res.render('square.njk');
@@ -38,7 +40,7 @@ app.get('/squareanswer', (req, res) => {
         V: Math.pow(a, 3),
         P: 4 * a,
     };
-    res.render('squareanswer.njk', answer);
+    res.render('squareanswer.njk', req.query);
 });
 
 app.get('/circle', (req, res) => {
@@ -46,12 +48,12 @@ app.get('/circle', (req, res) => {
 });
 
 app.get('/circleanswer', (req, res) => {
-    let a = req.query.a;
+    let r = req.query.r;
     let answer = {
-        S: Math.pow(a, 2),
-        a: a,
-        V: Math.pow(a, 3),
-        P: 4 * a,
+        S: Math.pow(r, 2) * Math.PI,
+        r: r,
+        V: Math.pow(r, 2) * Math.PI * 4/3,
+        C: 2 * Math.PI * r,
     };
     res.render('circleanswer.njk', answer);
 });
@@ -62,11 +64,11 @@ app.get('/pythagoras', (req, res) => {
 
 app.get('/pythagorasanswer', (req, res) => {
     let a = req.query.a;
+    let b = req.query.b;
     let answer = {
-        S: Math.pow(a, 2),
+        b: b,
         a: a,
-        V: Math.pow(a, 3),
-        P: 4 * a,
+        C: Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)),
     };
     res.render('pythagorasanswer.njk', answer);
 });
@@ -74,4 +76,3 @@ app.get('/pythagorasanswer', (req, res) => {
   app.listen(port, () => {
     console.log(`example app listening on port http://localhost:${port}`)
   });
-  
